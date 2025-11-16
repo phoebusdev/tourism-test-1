@@ -494,6 +494,24 @@ ul, ol {
     margin-top: var(--spacing-xl);
 }
 
+.about-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-slow);
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+}
+
 .about-content p {
     margin-bottom: var(--spacing-md);
     line-height: 1.8;
@@ -657,11 +675,12 @@ ul, ol {
 
 .church-card {
     background: var(--bg-light);
-    padding: var(--spacing-xl);
+    padding: 0;
     border-radius: var(--radius-lg);
     border-top: 4px solid var(--accent-color);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+    overflow: hidden;
 }
 
 .church-card:hover {
@@ -669,24 +688,80 @@ ul, ol {
     transform: translateY(-5px);
 }
 
-.church-icon {
-    font-size: var(--font-size-5xl);
-    margin-bottom: var(--spacing-md);
-    text-align: center;
+.church-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
 }
 
 .church-card h3 {
     font-family: var(--font-heading);
     font-size: var(--font-size-2xl);
     color: var(--primary-color);
-    margin-bottom: var(--spacing-md);
+    margin: var(--spacing-lg) var(--spacing-xl) var(--spacing-md);
     text-align: center;
 }
 
 .church-card p {
     color: var(--text-medium);
     line-height: 1.7;
-    margin-bottom: var(--spacing-sm);
+    margin: 0 var(--spacing-xl) var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+}
+
+.church-card p:last-child {
+    padding-bottom: var(--spacing-xl);
+}
+
+.churches-gallery {
+    margin-top: var(--spacing-3xl);
+    padding: var(--spacing-2xl);
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+}
+
+.churches-gallery h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-3xl);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+.gallery-item {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    margin: 0;
+}
+
+.gallery-item:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-3px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item figcaption {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: var(--bg-white);
 }
 
 .heritage-preservation {
@@ -791,9 +866,29 @@ ul, ol {
     margin-bottom: var(--spacing-md);
 }
 
-.accommodation-info p {
+.accommodation-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.accommodation-text p {
     color: var(--text-medium);
     line-height: 1.7;
+}
+
+.accommodation-image {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.accommodation-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* ===================================
@@ -1045,12 +1140,29 @@ ul, ol {
         gap: var(--spacing-2xl);
     }
 
+    .about-image {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    .about-content {
+        grid-column: 2;
+    }
+
     .about-highlights {
         grid-column: 2;
     }
 
     .churches-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .accommodation-content {
+        grid-template-columns: 2fr 1fr;
     }
 
     .activities-grid {
