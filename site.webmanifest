@@ -1,0 +1,23 @@
+{
+  "name": "Voskopojë - Historic Mountain Village in Albania",
+  "short_name": "Voskopojë",
+  "description": "Discover Voskopojë, the Paris of the Balkans - a historic Albanian mountain village featuring Byzantine churches and pristine nature",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#c41e3a",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["travel", "tourism", "culture", "history"],
+  "screenshots": []
+}

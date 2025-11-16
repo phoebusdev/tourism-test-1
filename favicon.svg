@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c41e3a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a01729;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e6c966;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#bgGrad)"/>
+
+  <!-- Byzantine church dome -->
+  <path d="M 50 20 Q 35 30, 35 45 L 35 60 L 65 60 L 65 45 Q 65 30, 50 20 Z" fill="url(#goldGrad)"/>
+
+  <!-- Church cross on top -->
+  <rect x="48" y="10" width="4" height="12" fill="#ffffff"/>
+  <rect x="43" y="14" width="14" height="4" fill="#ffffff"/>
+
+  <!-- Church base -->
+  <rect x="38" y="60" width="24" height="20" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Church door -->
+  <path d="M 45 70 Q 45 65, 50 65 Q 55 65, 55 70 L 55 80 L 45 80 Z" fill="url(#bgGrad)"/>
+
+  <!-- Decorative Byzantine pattern -->
+  <circle cx="50" cy="40" r="6" fill="#2c5f7f" opacity="0.6"/>
+  <circle cx="50" cy="40" r="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Mountain peaks in background (subtle) -->
+  <path d="M 15 75 L 25 60 L 35 75 Z" fill="#1a3a4d" opacity="0.3"/>
+  <path d="M 65 75 L 75 60 L 85 75 Z" fill="#1a3a4d" opacity="0.3"/>
+</svg>

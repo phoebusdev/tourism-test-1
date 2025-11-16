@@ -1211,3 +1211,403 @@ ul, ol {
         opacity: 1;
     }
 }
+
+/* ===================================
+   Pagination Styles
+   =================================== */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-color);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pagination-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.pagination-btn:disabled {
+    background: var(--bg-gray);
+    color: var(--text-light);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.pagination-btn .arrow {
+    font-size: var(--font-size-lg);
+    transition: transform var(--transition-base);
+}
+
+.pagination-btn:hover:not(:disabled) .arrow {
+    transform: scale(1.2);
+}
+
+.pagination-indicators {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+.pagination-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-gray);
+    border: 2px solid var(--text-light);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    padding: 0;
+}
+
+.pagination-dot:hover {
+    background: var(--secondary-light);
+    border-color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.pagination-dot.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    width: 32px;
+    border-radius: 6px;
+}
+
+/* ===================================
+   Scroll Progress Indicator
+   =================================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    z-index: calc(var(--z-fixed) + 1);
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 4px rgba(196, 30, 58, 0.3);
+}
+
+/* ===================================
+   Enhanced Card Animations
+   =================================== */
+.church-card,
+.activity-card,
+.visit-card,
+.highlight-card {
+    transition: all var(--transition-base);
+    transform-origin: center;
+    will-change: transform;
+}
+
+.church-card:hover,
+.activity-card:hover,
+.visit-card:hover,
+.highlight-card:hover {
+    box-shadow: var(--shadow-xl);
+    z-index: 10;
+}
+
+/* Enhanced Timeline Animation */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease-out;
+}
+
+.timeline-item.fade-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===================================
+   Advanced Depth & Layering
+   =================================== */
+.section {
+    position: relative;
+    z-index: 1;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: -1;
+}
+
+/* Alternating section backgrounds for depth */
+.about-section {
+    background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+}
+
+.history-section {
+    background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    position: relative;
+}
+
+.history-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, transparent 0%, var(--bg-light) 100%);
+    pointer-events: none;
+}
+
+.heritage-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+    box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.nature-section {
+    background: linear-gradient(180deg, var(--bg-white) 0%, rgba(44, 95, 127, 0.03) 50%, var(--bg-white) 100%);
+}
+
+.visit-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+}
+
+/* Enhanced card depth */
+.church-card,
+.activity-card,
+.visit-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.church-card::before,
+.activity-card::before,
+.visit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.church-card:hover::before,
+.activity-card:hover::before,
+.visit-card:hover::before {
+    left: 100%;
+}
+
+/* ===================================
+   Advanced Animation Keyframes
+   =================================== */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-5deg) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* Section entrance animations */
+.section-header {
+    animation: slideInUp 0.8s ease-out;
+}
+
+.highlight-card:nth-child(1) {
+    animation: slideInUp 0.6s ease-out 0.1s both;
+}
+
+.highlight-card:nth-child(2) {
+    animation: slideInUp 0.6s ease-out 0.2s both;
+}
+
+.highlight-card:nth-child(3) {
+    animation: slideInUp 0.6s ease-out 0.3s both;
+}
+
+/* ===================================
+   Micro-interactions
+   =================================== */
+.cta-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Navigation link animations */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 100%;
+}
+
+/* Back to top button pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.back-to-top.visible {
+    animation: pulse 2s infinite;
+}
+
+/* Icon animations */
+.church-icon,
+.activity-icon,
+.highlight-icon {
+    display: inline-block;
+    transition: transform var(--transition-base);
+}
+
+.church-card:hover .church-icon,
+.activity-card:hover .activity-icon,
+.highlight-card:hover .highlight-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* ===================================
+   Responsive Pagination
+   =================================== */
+@media (max-width: 768px) {
+    .pagination-controls {
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+    }
+
+    .pagination-btn {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .pagination-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .pagination-dot.active {
+        width: 24px;
+    }
+}
+
+/* ===================================
+   Dark Mode Support (Future)
+   =================================== */
+@media (prefers-color-scheme: dark) {
+    /* Commented out for now - can be enabled later
+    :root {
+        --bg-white: #1a1a1a;
+        --bg-light: #2a2a2a;
+        --text-dark: #f5f5f5;
+        --text-medium: #d0d0d0;
+        --text-light: #a0a0a0;
+    }
+    */
+}

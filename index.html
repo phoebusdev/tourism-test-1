@@ -28,37 +28,147 @@
     <meta property="twitter:title" content="Voskopojë - Historic Mountain Village in Albania">
     <meta property="twitter:description" content="Explore the historic mountain village of Voskopojë, featuring magnificent Byzantine churches, stunning mountain landscapes, and centuries of cultural heritage.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23c41e3a'/><path d='M 50 20 Q 35 30, 35 45 L 35 60 L 65 60 L 65 45 Q 65 30, 50 20 Z' fill='%23d4af37'/><rect x='48' y='10' width='4' height='12' fill='%23fff'/><rect x='43' y='14' width='14' height='4' fill='%23fff'/></svg>">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#c41e3a">
+    <meta name="msapplication-TileColor" content="#c41e3a">
+
     <!-- Geo Tags -->
     <meta name="geo.region" content="AL-KO">
     <meta name="geo.placename" content="Voskopojë">
     <meta name="geo.position" content="40.6333;20.5833">
     <meta name="ICBM" content="40.6333, 20.5833">
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Additional SEO Tags -->
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <!-- Structured Data (JSON-LD) - Enhanced -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "TouristDestination",
-        "name": "Voskopojë",
-        "alternateName": "Moscopole",
-        "description": "Historic mountain village in southeastern Albania, known as the 'Paris of the Balkans', featuring Byzantine churches and pristine nature.",
-        "url": "https://voskopoje-albania.com/",
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "40.6333",
-            "longitude": "20.5833",
-            "elevation": "1160"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "Korçë County",
-            "addressCountry": "AL"
-        },
-        "touristType": ["Culture", "History", "Nature", "Hiking", "Heritage"],
-        "includedInDataCatalog": {
-            "@type": "Place",
-            "name": "Albania"
-        }
+        "@graph": [
+            {
+                "@type": "TouristDestination",
+                "@id": "https://voskopoje-albania.com/#destination",
+                "name": "Voskopojë",
+                "alternateName": ["Moscopole", "Voskopoja"],
+                "description": "Historic mountain village in southeastern Albania, known as the 'Paris of the Balkans', featuring Byzantine churches and pristine nature.",
+                "url": "https://voskopoje-albania.com/",
+                "image": "https://voskopoje-albania.com/favicon.svg",
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 40.6333,
+                    "longitude": 20.5833,
+                    "elevation": "1160 meters"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "Korçë County",
+                    "addressLocality": "Voskopojë",
+                    "addressCountry": "AL"
+                },
+                "touristType": ["Culture", "History", "Nature", "Hiking", "Heritage", "Photography"],
+                "includedInDataCatalog": {
+                    "@type": "DataCatalog",
+                    "name": "Albania Tourism"
+                },
+                "containsPlace": [
+                    {
+                        "@type": "Church",
+                        "name": "St. Nicholas Church",
+                        "description": "Post-Byzantine basilica, central architectural landmark"
+                    },
+                    {
+                        "@type": "Church",
+                        "name": "Virgin Mary Cathedral",
+                        "description": "One of Albania's largest churches, capacity 1,000 worshippers"
+                    }
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://voskopoje-albania.com/#website",
+                "url": "https://voskopoje-albania.com/",
+                "name": "Voskopojë Tourism",
+                "description": "Comprehensive guide to Voskopojë, Albania",
+                "inLanguage": "en-US",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://voskopoje-albania.com/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Place",
+                "@id": "https://voskopoje-albania.com/#place",
+                "name": "Voskopojë",
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 40.6333,
+                    "longitude": 20.5833
+                },
+                "containedInPlace": {
+                    "@type": "AdministrativeArea",
+                    "name": "Korçë County",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Albania"
+                    }
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://voskopoje-albania.com/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://voskopoje-albania.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "About",
+                        "item": "https://voskopoje-albania.com/#about"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "History",
+                        "item": "https://voskopoje-albania.com/#history"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "name": "Heritage",
+                        "item": "https://voskopoje-albania.com/#heritage"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 5,
+                        "name": "Nature",
+                        "item": "https://voskopoje-albania.com/#nature"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 6,
+                        "name": "Visit",
+                        "item": "https://voskopoje-albania.com/#visit"
+                    }
+                ]
+            }
+        ]
     }
     </script>
 
@@ -249,28 +359,67 @@
                     <p>Deep in southeastern Albania, this tiny hamlet holds five churches with one of the most magnificent concentrations of Orthodox Christian fresco art in the world. From the outside, the churches resemble stone barns, reflecting their 18th-century heritage as Christian gathering places in the Islamic Ottoman Empire. Inside, they reveal painted masterworks of brilliant blues, reds, and yellows.</p>
                 </div>
 
-                <div class="churches-grid">
-                    <article class="church-card">
-                        <div class="church-icon" aria-hidden="true">⛪</div>
-                        <h3>St. Nicholas Church (St. Kolli)</h3>
-                        <p><strong>Significance:</strong> Located in the center of Voskopojë, this is the most important church for its architecture, featuring all the elements of the post-Byzantine basilica type.</p>
-                        <p>This church serves as a prime example of the architectural sophistication that characterized Voskopojë's golden age.</p>
-                    </article>
+                <div class="churches-gallery">
+                    <div class="churches-grid" id="churches-container">
+                        <article class="church-card" data-church-index="0">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>St. Nicholas Church (St. Kolli)</h3>
+                            <p><strong>Built:</strong> 18th century</p>
+                            <p><strong>Significance:</strong> Located in the center of Voskopojë, this is the most important church for its architecture, featuring all the elements of the post-Byzantine basilica type.</p>
+                            <p>This church serves as a prime example of the architectural sophistication that characterized Voskopojë's golden age.</p>
+                        </article>
 
-                    <article class="church-card">
-                        <div class="church-icon" aria-hidden="true">⛪</div>
-                        <h3>Virgin Mary Cathedral</h3>
-                        <p><strong>Significance:</strong> One of the largest churches in Albania with a capacity of up to 1,000 worshippers.</p>
-                        <p>This impressive cathedral demonstrates the scale and importance of Voskopojë as a religious and cultural center during its peak.</p>
-                    </article>
+                        <article class="church-card" data-church-index="1">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>Virgin Mary Cathedral</h3>
+                            <p><strong>Built:</strong> 1694</p>
+                            <p><strong>Significance:</strong> One of the largest churches in Albania with a capacity of up to 1,000 worshippers.</p>
+                            <p>This impressive cathedral demonstrates the scale and importance of Voskopojë as a religious and cultural center during its peak.</p>
+                        </article>
 
-                    <article class="church-card">
-                        <div class="church-icon" aria-hidden="true">⛪</div>
-                        <h3>Church of the Archangels (St. Michael)</h3>
-                        <p><strong>Built:</strong> Late 17th century</p>
-                        <p><strong>Frescoes:</strong> Painted circa 1722</p>
-                        <p>A basilica type with curved cover and remarkable frescoes from the early 18th century, showcasing the artistic excellence of the period.</p>
-                    </article>
+                        <article class="church-card" data-church-index="2">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>Church of the Archangels (St. Michael)</h3>
+                            <p><strong>Built:</strong> Late 17th century</p>
+                            <p><strong>Frescoes:</strong> Painted circa 1722</p>
+                            <p>A basilica type with curved cover and remarkable frescoes from the early 18th century, showcasing the artistic excellence of the period.</p>
+                        </article>
+
+                        <article class="church-card" data-church-index="3">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>St. Athanasius Church</h3>
+                            <p><strong>Built:</strong> 1724</p>
+                            <p><strong>Frescoes:</strong> Created by renowned fresco painters David Selenica and brothers Constantine and Athanasius.</p>
+                            <p>Features some of the most exquisite Byzantine frescoes in the Balkans, with vibrant blues and golds that have survived centuries.</p>
+                        </article>
+
+                        <article class="church-card" data-church-index="4">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>St. John the Baptist Church</h3>
+                            <p><strong>Built:</strong> 1632</p>
+                            <p><strong>Significance:</strong> One of the oldest surviving churches in Voskopojë.</p>
+                            <p>This church represents the early development of the settlement and contains historical inscriptions documenting Voskopojë's rise.</p>
+                        </article>
+
+                        <article class="church-card" data-church-index="5">
+                            <div class="church-icon" aria-hidden="true">⛪</div>
+                            <h3>Church of St. Gregory</h3>
+                            <p><strong>Built:</strong> Early 18th century</p>
+                            <p><strong>Features:</strong> Distinctive architectural elements and well-preserved wooden iconostasis.</p>
+                            <p>This church showcases the exceptional craftsmanship of Voskopojë's artisans during the city's cultural golden age.</p>
+                        </article>
+                    </div>
+
+                    <!-- Pagination Controls -->
+                    <div class="pagination-controls" id="church-pagination">
+                        <button class="pagination-btn prev-btn" id="prev-churches" aria-label="Previous churches">
+                            <span class="arrow">←</span> Previous
+                        </button>
+                        <div class="pagination-indicators" id="pagination-dots"></div>
+                        <button class="pagination-btn next-btn" id="next-churches" aria-label="Next churches">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="heritage-preservation">

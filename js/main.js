@@ -388,6 +388,225 @@ function logPerformanceMetrics() {
 }
 
 // ===================================
+// Church Gallery Pagination
+// ===================================
+function initChurchPagination() {
+    const churchCards = document.querySelectorAll('.church-card');
+    const prevBtn = document.getElementById('prev-churches');
+    const nextBtn = document.getElementById('next-churches');
+    const paginationDots = document.getElementById('pagination-dots');
+
+    if (!churchCards.length || !prevBtn || !nextBtn) return;
+
+    const cardsPerPage = 3;
+    const totalPages = Math.ceil(churchCards.length / cardsPerPage);
+    let currentPage = 0;
+
+    // Create pagination dots
+    function createPaginationDots() {
+        paginationDots.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('pagination-dot');
+            dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+            if (i === currentPage) {
+                dot.classList.add('active');
+            }
+            dot.addEventListener('click', () => goToPage(i));
+            paginationDots.appendChild(dot);
+        }
+    }
+
+    // Show cards for current page
+    function showPage(pageIndex) {
+        const start = pageIndex * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        churchCards.forEach((card, index) => {
+            card.style.display = 'none';
+            card.classList.remove('fade-in');
+
+            if (index >= start && index < end) {
+                card.style.display = 'block';
+                // Trigger animation
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, 50 * (index - start));
+            }
+        });
+
+        // Update pagination dots
+        document.querySelectorAll('.pagination-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === pageIndex);
+        });
+
+        // Update button states
+        prevBtn.disabled = pageIndex === 0;
+        nextBtn.disabled = pageIndex === totalPages - 1;
+
+        // Update ARIA labels
+        prevBtn.setAttribute('aria-disabled', pageIndex === 0);
+        nextBtn.setAttribute('aria-disabled', pageIndex === totalPages - 1);
+    }
+
+    // Navigate to specific page
+    function goToPage(pageIndex) {
+        currentPage = pageIndex;
+        showPage(currentPage);
+
+        // Scroll to churches section smoothly
+        const heritageSection = document.getElementById('heritage');
+        if (heritageSection) {
+            const navbarHeight = navbar ? navbar.offsetHeight : 0;
+            const targetPosition = heritageSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 0) {
+            goToPage(currentPage - 1);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            goToPage(currentPage + 1);
+        }
+    });
+
+    // Keyboard navigation for pagination
+    document.addEventListener('keydown', (e) => {
+        const paginationActive = document.activeElement.classList.contains('pagination-btn') ||
+                                 document.activeElement.classList.contains('pagination-dot');
+
+        if (paginationActive) {
+            if (e.key === 'ArrowLeft' && currentPage > 0) {
+                e.preventDefault();
+                goToPage(currentPage - 1);
+            } else if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                e.preventDefault();
+                goToPage(currentPage + 1);
+            }
+        }
+    });
+
+    // Initialize
+    createPaginationDots();
+    showPage(currentPage);
+}
+
+// ===================================
+// Parallax Effect for Hero Section
+// ===================================
+function initParallaxEffect() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroContent = hero.querySelector('.hero-content');
+
+        if (heroContent && scrolled < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+            heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+        }
+    }, { passive: true });
+}
+
+// ===================================
+// Enhanced Card Hover Effects
+// ===================================
+function initCardHoverEffects() {
+    const cards = document.querySelectorAll('.church-card, .activity-card, .visit-card, .highlight-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// ===================================
+// Scroll Progress Indicator
+// ===================================
+function initScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.setAttribute('role', 'progressbar');
+    progressBar.setAttribute('aria-label', 'Page scroll progress');
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        progressBar.style.width = `${scrolled}%`;
+        progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
+    }, { passive: true });
+}
+
+// ===================================
+// Animated Counter for Stats
+// ===================================
+function initStatsCounter() {
+    const stats = document.querySelectorAll('.stat-number');
+
+    const animateValue = (element, start, end, duration) => {
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+        const isElevation = element.textContent.includes('m');
+        const isCentury = element.textContent.includes('th');
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= end) {
+                current = end;
+                clearInterval(timer);
+            }
+
+            if (isElevation) {
+                element.textContent = Math.round(current) + 'm';
+            } else if (isCentury) {
+                element.textContent = Math.round(current) + 'th';
+            } else {
+                element.textContent = Math.round(current);
+            }
+        }, 16);
+    };
+
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const text = entry.target.textContent;
+                const numberMatch = text.match(/[\d,]+/);
+
+                if (numberMatch) {
+                    const finalValue = parseInt(numberMatch[0].replace(/,/g, ''));
+                    animateValue(entry.target, 0, finalValue, 2000);
+                }
+            }
+        });
+    }, observerOptions);
+
+    stats.forEach(stat => observer.observe(stat));
+}
+
+// ===================================
 // Initialize All Features
 // ===================================
 function init() {
@@ -404,6 +623,13 @@ function init() {
     initExternalLinks();
     initKeyboardNavigation();
     initPrintOptimization();
+
+    // New features
+    initChurchPagination();
+    initParallaxEffect();
+    initCardHoverEffects();
+    initScrollProgress();
+    initStatsCounter();
 
     // Analytics and monitoring
     initAnalytics();
