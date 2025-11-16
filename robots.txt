@@ -1,0 +1,20 @@
+# robots.txt for Voskopojë Tourism Website
+# This file tells search engines which pages to crawl
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://voskopoje-albania.com/sitemap.xml
+
+# Crawl delay (optional - adjust based on server capacity)
+# Crawl-delay: 1
+
+# Block specific paths (none currently)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Block specific file types (none currently needed)
+# Disallow: /*.pdf$
+# Disallow: /*.doc$

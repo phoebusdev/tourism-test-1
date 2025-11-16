@@ -1,0 +1,34 @@
+/* TEAM */
+Developer: Tourism Website Development
+Site: Voskopojë Tourism Information
+Location: Albania
+
+/* THANKS */
+Content Sources:
+- Wikipedia (Moscopole article)
+- National Geographic Travel
+- World Monuments Fund
+- Albania 360
+- Euronews Albania
+
+Special Thanks:
+- The people of Voskopojë for preserving their cultural heritage
+- Albanian Ministry of Culture for restoration efforts
+- Researchers and restorers working to save the historic churches
+
+/* SITE */
+Last update: 2025-11-16
+Standards: HTML5, CSS3, ECMAScript 6+
+Components: Vanilla JavaScript (no frameworks)
+Software: Built with modern web standards
+Hosting: Static hosting ready
+Language: English
+Doctype: HTML5
+IDE: Claude Code
+
+/* PURPOSE */
+This website is created for educational and informational purposes
+to showcase the historic mountain village of Voskopojë, Albania,
+and to help preserve and promote its cultural heritage.
+
+All content is sourced from public educational resources.
