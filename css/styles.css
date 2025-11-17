@@ -101,7 +101,7 @@ html {
 body {
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: 1.75;
     color: var(--text-dark);
     background-color: var(--bg-white);
     overflow-x: hidden;
@@ -171,6 +171,8 @@ ul, ol {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .title-underline {
@@ -186,12 +188,13 @@ ul, ol {
     color: var(--text-medium);
     max-width: 700px;
     margin: 0 auto;
+    line-height: 1.8;
 }
 
 .lead {
     font-size: var(--font-size-lg);
     font-weight: 500;
-    line-height: 1.7;
+    line-height: 1.85;
     color: var(--text-medium);
     margin-bottom: var(--spacing-md);
 }
@@ -222,6 +225,16 @@ ul, ol {
 .nav-brand {
     display: flex;
     flex-direction: column;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-base);
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
 }
 
 .logo {
@@ -323,8 +336,11 @@ ul, ol {
     justify-content: center;
     background: var(--gradient-hero);
     background-image:
-        linear-gradient(135deg, rgba(44, 95, 127, 0.92) 0%, rgba(26, 58, 77, 0.92) 100%),
-        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.03) 10px, rgba(255, 255, 255, 0.03) 20px);
+        linear-gradient(135deg, rgba(44, 95, 127, 0.92) 0%, rgba(26, 58, 77, 0.95) 50%, rgba(44, 95, 127, 0.92) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.03) 10px, rgba(0, 0, 0, 0.03) 20px),
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
     overflow: hidden;
     margin-top: 70px;
 }
@@ -370,7 +386,8 @@ ul, ol {
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
@@ -406,12 +423,52 @@ ul, ol {
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.2);
     min-width: 150px;
-    transition: transform var(--transition-base), background var(--transition-base);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.stat:hover::before {
+    opacity: 1;
 }
 
 .stat:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.stat-icon {
+    font-size: var(--font-size-2xl);
+    color: var(--accent-light);
+    margin-bottom: var(--spacing-xs);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition-base);
+}
+
+.stat:hover .stat-icon {
+    background: rgba(212, 175, 55, 0.3);
+    transform: rotate(10deg) scale(1.1);
 }
 
 .stat-number {
@@ -420,6 +477,8 @@ ul, ol {
     font-weight: 700;
     color: var(--accent-light);
     margin-bottom: var(--spacing-xs);
+    position: relative;
+    z-index: 1;
 }
 
 .stat-label {
@@ -427,11 +486,15 @@ ul, ol {
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.9;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-button {
-    display: inline-block;
-    background: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
     color: var(--text-dark);
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: var(--radius-lg);
@@ -442,13 +505,47 @@ ul, ol {
     box-shadow: var(--shadow-lg);
     transition: all var(--transition-base);
     margin-top: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
+    transition: left var(--transition-base);
+    z-index: 0;
+}
+
+.cta-button:hover::before,
+.cta-button:focus::before {
+    left: 0;
 }
 
 .cta-button:hover,
 .cta-button:focus {
-    background: var(--accent-light);
     transform: translateY(-3px);
     box-shadow: var(--shadow-xl);
+}
+
+.cta-button i {
+    position: relative;
+    z-index: 1;
+    transition: transform var(--transition-base);
+}
+
+.cta-button:hover i,
+.cta-button:focus i {
+    transform: translateX(5px);
+}
+
+.cta-button > * {
+    position: relative;
+    z-index: 1;
 }
 
 .scroll-indicator {
@@ -503,9 +600,16 @@ ul, ol {
 .location-info {
     margin-top: var(--spacing-xl);
     padding: var(--spacing-lg);
-    background: var(--bg-light);
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
     border-left: 4px solid var(--primary-color);
     border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.location-info:hover {
+    box-shadow: var(--shadow-md);
+    border-left-width: 6px;
 }
 
 .location-info h3 {
@@ -513,6 +617,13 @@ ul, ol {
     font-size: var(--font-size-xl);
     color: var(--primary-color);
     margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.location-info h3 i {
+    font-size: var(--font-size-2xl);
 }
 
 .info-list {
@@ -536,11 +647,30 @@ ul, ol {
     padding: var(--spacing-xl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
-    transition: transform var(--transition-base);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform var(--transition-slow);
+}
+
+.highlight-card:hover::before {
+    transform: scale(1);
 }
 
 .highlight-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
 }
 
 .highlight-icon {
@@ -662,11 +792,29 @@ ul, ol {
     border-top: 4px solid var(--accent-color);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+    position: relative;
+}
+
+.church-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-light) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.church-card:hover::after {
+    opacity: 1;
 }
 
 .church-card:hover {
     box-shadow: var(--shadow-xl);
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
+    border-top-color: var(--accent-light);
 }
 
 .church-icon {
@@ -737,11 +885,14 @@ ul, ol {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+    border: 2px solid transparent;
 }
 
 .activity-card:hover {
     box-shadow: var(--shadow-xl);
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
+    border-color: var(--secondary-light);
+    background: linear-gradient(to bottom, var(--bg-white) 0%, var(--bg-light) 100%);
 }
 
 .activity-header {
@@ -797,6 +948,89 @@ ul, ol {
 }
 
 /* ===================================
+   Testimonials Section
+   =================================== */
+.testimonials-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.testimonial-card {
+    background: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: all var(--transition-base);
+    border-left: 4px solid var(--accent-color);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-left-color: var(--accent-light);
+}
+
+.quote-icon {
+    font-size: var(--font-size-3xl);
+    color: var(--accent-color);
+    opacity: 0.3;
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-quote {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--text-medium);
+    font-style: italic;
+    margin: 0 0 var(--spacing-lg) 0;
+    position: relative;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--bg-gray);
+}
+
+.author-avatar {
+    font-size: var(--font-size-4xl);
+    color: var(--secondary-color);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    border-radius: 50%;
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+}
+
+.author-location {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* ===================================
    Visit Section
    =================================== */
 .visit-section {
@@ -816,11 +1050,14 @@ ul, ol {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+    border-left: 4px solid transparent;
 }
 
 .visit-card:hover {
     box-shadow: var(--shadow-xl);
-    transform: translateY(-3px);
+    transform: translateY(-6px) scale(1.01);
+    border-left-color: var(--primary-color);
+    background: var(--bg-white);
 }
 
 .visit-card h3 {
@@ -1062,6 +1299,10 @@ ul, ol {
     }
 
     .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonials-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
