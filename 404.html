@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Voskopojë</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/svg+xml" href="images/icons/favicon.svg">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(44, 95, 127, 0.92) 0%, rgba(26, 58, 77, 0.95) 50%, rgba(44, 95, 127, 0.92) 100%);
+            padding: var(--spacing-xl);
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .error-content {
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            color: var(--accent-light);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .error-title {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-3xl);
+            margin: var(--spacing-md) 0;
+        }
+
+        .error-description {
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+            margin: var(--spacing-md) 0 var(--spacing-xl);
+            opacity: 0.95;
+        }
+
+        .error-links {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--accent-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .error-link:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: var(--accent-light);
+        }
+
+        .error-link.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-white);
+        }
+
+        .error-link.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <div class="error-icon"><i class="fas fa-mountain"></i></div>
+            <h2 class="error-title">Lost in the Mountains?</h2>
+            <p class="error-description">
+                The page you're looking for seems to have wandered off into the Morava Mountains.
+                Let's help you find your way back to civilization!
+            </p>
+            <div class="error-links">
+                <a href="/" class="error-link">
+                    <i class="fas fa-home"></i>
+                    Return Home
+                </a>
+                <a href="/#about" class="error-link secondary">
+                    <i class="fas fa-compass"></i>
+                    Explore Voskopojë
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

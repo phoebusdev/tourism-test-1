@@ -200,6 +200,20 @@ ul, ol {
 }
 
 /* ===================================
+   Progress Bar
+   =================================== */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    z-index: calc(var(--z-fixed) + 1);
+    transition: width var(--transition-base);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* ===================================
    Navigation
    =================================== */
 .navbar {
@@ -732,6 +746,30 @@ ul, ol {
     border: 4px solid var(--bg-light);
     border-radius: 50%;
     box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.timeline-marker::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.timeline-item:hover .timeline-marker {
+    background: var(--accent-light);
+    transform: scale(1.3);
+}
+
+.timeline-item:hover .timeline-marker::before {
+    opacity: 1;
 }
 
 .timeline-content {
@@ -1164,6 +1202,36 @@ ul, ol {
 .footer-location {
     color: var(--accent-light);
     font-style: italic;
+    margin-bottom: var(--spacing-md);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-white);
+    font-size: var(--font-size-lg);
+    transition: all var(--transition-base);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-link:hover,
+.social-link:focus {
+    background: var(--accent-color);
+    color: var(--text-dark);
+    transform: translateY(-3px) rotate(5deg);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
 }
 
 .footer-links {
@@ -1384,6 +1452,8 @@ ul, ol {
     :root {
         --container-padding: 1rem;
         --spacing-3xl: 3rem;
+        --spacing-2xl: 2.5rem;
+        --spacing-xl: 2rem;
     }
 
     .hero-title {
@@ -1397,6 +1467,32 @@ ul, ol {
 
     .stat {
         width: 100%;
+        min-width: auto;
+    }
+
+    .section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+
+    .highlight-card,
+    .church-card,
+    .activity-card,
+    .visit-card,
+    .testimonial-card {
+        padding: var(--spacing-md);
+    }
+
+    .cta-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .footer-grid {
+        gap: var(--spacing-lg);
     }
 }
 

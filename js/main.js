@@ -79,13 +79,14 @@ function initSmoothScrolling() {
 }
 
 // ===================================
-// Navbar Scroll Behavior
+// Navbar Scroll Behavior & Progress Bar
 // ===================================
 function initNavbarScroll() {
     if (!navbar) return;
 
     let lastScrollTop = 0;
     let scrollThreshold = 100;
+    const progressBar = document.getElementById('progressBar');
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -95,6 +96,14 @@ function initNavbarScroll() {
             navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
         } else {
             navbar.style.boxShadow = '';
+        }
+
+        // Update progress bar
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
         }
 
         // Hide/show navbar on scroll (optional - currently disabled for better UX)
